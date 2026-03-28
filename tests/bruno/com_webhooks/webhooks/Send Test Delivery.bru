@@ -1,0 +1,19 @@
+meta {
+  name: Send Test Delivery
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/index.php/v1/webhooks/{{webhookId}}/test
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+assert {
+  res.status: eq 200
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Get Single Webhook
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/index.php/v1/webhooks/{{webhookId}}
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+assert {
+  res.status: eq 200
+  res.headers['content-type']: contains application/vnd.api+json
+  res.body.data.type: eq webhooks
+  res.body.data.id: eq {{webhookId}}
+  res.body.data.attributes.title: eq Test Webhook
+}

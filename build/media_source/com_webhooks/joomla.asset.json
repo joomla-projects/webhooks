@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "com_webhooks",
+  "version": "1.0.0",
+  "description": "Joomla CMS",
+  "license": "GPL-2.0-or-later",
+  "assets": [
+    {
+      "name": "com_webhooks.admin-webhook-verify",
+      "type": "script",
+      "uri": "com_webhooks/admin-webhook-verify.min.js",
+      "dependencies": [
+        "core"
+      ],
+      "attributes": {
+        "type": "module",
+        "defer": true
+      }
+    }
+  ]
+}

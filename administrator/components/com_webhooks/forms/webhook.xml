@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset name="details" label="COM_WEBHOOKS_FIELDSET_DETAILS">
+		<field
+			name="id"
+			type="hidden"
+			default="0"
+		/>
+
+		<field
+			name="title"
+			type="text"
+			label="JGLOBAL_TITLE"
+			required="true"
+			size="40"
+		/>
+
+		<field
+			name="alias"
+			type="text"
+			label="JFIELD_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC"
+			size="40"
+		/>
+
+		<field
+			name="url"
+			type="url"
+			label="COM_WEBHOOKS_FIELD_URL_LABEL"
+			description="COM_WEBHOOKS_FIELD_URL_DESC"
+			required="true"
+			size="60"
+		/>
+
+		<field
+			name="secret"
+			type="text"
+			label="COM_WEBHOOKS_FIELD_SECRET_LABEL"
+			description="COM_WEBHOOKS_FIELD_SECRET_DESC"
+			readonly="true"
+			size="60"
+		/>
+
+		<field
+			name="events"
+			type="textarea"
+			label="COM_WEBHOOKS_FIELD_EVENTS_LABEL"
+			description="COM_WEBHOOKS_FIELD_EVENTS_DESC"
+			rows="5"
+			filter="raw"
+		/>
+
+		<field
+			name="payload_mode"
+			type="list"
+			label="COM_WEBHOOKS_FIELD_PAYLOAD_MODE_LABEL"
+			default="full"
+			validate="options"
+			>
+			<option value="full">COM_WEBHOOKS_OPTION_FULL</option>
+			<option value="minimal">COM_WEBHOOKS_OPTION_MINIMAL</option>
+		</field>
+
+		<field
+			name="batch_mode"
+			type="list"
+			label="COM_WEBHOOKS_FIELD_BATCH_MODE_LABEL"
+			default="individual"
+			validate="options"
+			>
+			<option value="individual">COM_WEBHOOKS_OPTION_INDIVIDUAL</option>
+			<option value="batched">COM_WEBHOOKS_OPTION_BATCHED</option>
+		</field>
+	</fieldset>
+
+	<fieldset name="conditions" label="COM_WEBHOOKS_FIELDSET_CONDITIONS">
+		<field
+			name="conditions"
+			type="textarea"
+			label="COM_WEBHOOKS_FIELD_CONDITIONS_LABEL"
+			description="COM_WEBHOOKS_FIELD_CONDITIONS_DESC"
+			rows="8"
+			filter="raw"
+		/>
+	</fieldset>
+
+	<fieldset name="delivery" label="COM_WEBHOOKS_FIELDSET_DELIVERY">
+		<field
+			name="retry_strategy"
+			type="list"
+			label="COM_WEBHOOKS_FIELD_RETRY_STRATEGY_LABEL"
+			default="exponential"
+			validate="options"
+			>
+			<option value="exponential">COM_WEBHOOKS_OPTION_EXPONENTIAL</option>
+			<option value="fixed">COM_WEBHOOKS_OPTION_FIXED</option>
+		</field>
+
+		<field
+			name="retry_count"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_RETRY_COUNT_LABEL"
+			default="5"
+			min="0"
+			max="20"
+		/>
+
+		<field
+			name="retry_interval"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_RETRY_INTERVAL_LABEL"
+			description="COM_WEBHOOKS_FIELD_RETRY_INTERVAL_DESC"
+			default="60"
+			min="10"
+			max="86400"
+		/>
+	</fieldset>
+
+	<fieldset name="circuitbreaker" label="COM_WEBHOOKS_FIELDSET_CIRCUIT_BREAKER">
+		<field
+			name="circuit_breaker_mode"
+			type="list"
+			label="COM_WEBHOOKS_FIELD_CIRCUIT_BREAKER_MODE_LABEL"
+			default="disable"
+			validate="options"
+			>
+			<option value="disable">COM_WEBHOOKS_OPTION_DISABLE</option>
+			<option value="cooldown">COM_WEBHOOKS_OPTION_COOLDOWN</option>
+		</field>
+
+		<field
+			name="circuit_breaker_threshold"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_CIRCUIT_BREAKER_THRESHOLD_LABEL"
+			default="50"
+			min="1"
+			max="1000"
+		/>
+
+		<field
+			name="consecutive_failures"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_CONSECUTIVE_FAILURES_LABEL"
+			readonly="true"
+			default="0"
+		/>
+
+		<field
+			name="disabled_at"
+			type="calendar"
+			label="COM_WEBHOOKS_FIELD_DISABLED_AT_LABEL"
+			readonly="true"
+			format="%Y-%m-%d %H:%M:%S"
+			filter="user_utc"
+		/>
+
+		<field
+			name="circuit_breaker_half_open"
+			type="radio"
+			layout="joomla.form.field.radio.switcher"
+			label="COM_WEBHOOKS_FIELD_CIRCUIT_BREAKER_HALF_OPEN_LABEL"
+			readonly="true"
+			default="0"
+			>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
+
+	<fieldset name="logging" label="COM_WEBHOOKS_FIELDSET_LOGGING">
+		<field
+			name="verbose_logging"
+			type="radio"
+			layout="joomla.form.field.radio.switcher"
+			label="COM_WEBHOOKS_FIELD_VERBOSE_LOGGING_LABEL"
+			default="0"
+			>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
+
+	<fieldset name="publishing" label="JGLOBAL_FIELDSET_PUBLISHING">
+		<field
+			name="state"
+			type="list"
+			label="JSTATUS"
+			default="1"
+			validate="options"
+			>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+
+		<field
+			name="access"
+			type="accesslevel"
+			label="JFIELD_ACCESS_LABEL"
+			default="1"
+		/>
+
+		<field
+			name="ordering"
+			type="ordering"
+			label="JFIELD_ORDERING_LABEL"
+		/>
+
+		<field
+			name="created"
+			type="calendar"
+			label="JGLOBAL_FIELD_CREATED_LABEL"
+			format="%Y-%m-%d %H:%M:%S"
+			filter="user_utc"
+		/>
+
+		<field
+			name="created_by"
+			type="user"
+			label="JGLOBAL_FIELD_CREATED_BY_LABEL"
+		/>
+
+		<field
+			name="modified"
+			type="calendar"
+			label="JGLOBAL_FIELD_MODIFIED_LABEL"
+			readonly="true"
+			format="%Y-%m-%d %H:%M:%S"
+			filter="user_utc"
+		/>
+
+		<field
+			name="modified_by"
+			type="user"
+			label="JGLOBAL_FIELD_MODIFIED_BY_LABEL"
+			readonly="true"
+		/>
+	</fieldset>
+
+	<field
+		name="params"
+		type="hidden"
+		default="{}"
+		filter="raw"
+	/>
+
+	<field name="verified" type="hidden" default="0" />
+	<field name="verify_token" type="hidden" default="" />
+</form>

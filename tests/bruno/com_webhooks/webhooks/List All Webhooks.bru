@@ -1,0 +1,21 @@
+meta {
+  name: List All Webhooks
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/index.php/v1/webhooks
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+assert {
+  res.status: eq 200
+  res.headers['content-type']: contains application/vnd.api+json
+  res.body.data: isDefined
+}

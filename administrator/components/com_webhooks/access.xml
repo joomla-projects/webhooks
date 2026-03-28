@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<access component="com_webhooks">
+	<section name="component">
+		<action
+			name="core.admin"
+			title="JACTION_ADMIN"
+		/>
+
+		<action
+			name="core.manage"
+			title="JACTION_MANAGE"
+		/>
+
+		<action
+			name="core.create"
+			title="JACTION_CREATE"
+		/>
+
+		<action
+			name="core.delete"
+			title="JACTION_DELETE"
+		/>
+
+		<action
+			name="core.edit"
+			title="JACTION_EDIT"
+		/>
+
+		<action
+			name="core.edit.state"
+			title="JACTION_EDITSTATE"
+		/>
+
+		<action
+			name="core.edit.own"
+			title="JACTION_EDITOWN"
+		/>
+
+		<action
+			name="webhooks.test"
+			title="COM_WEBHOOKS_ACTION_TEST"
+		/>
+
+		<action
+			name="webhooks.replay"
+			title="COM_WEBHOOKS_ACTION_REPLAY"
+		/>
+
+		<action
+			name="webhooks.viewlogs"
+			title="COM_WEBHOOKS_ACTION_VIEWLOGS"
+		/>
+	</section>
+	<section name="webhook">
+		<action
+			name="core.delete"
+			title="JACTION_DELETE"
+		/>
+
+		<action
+			name="core.edit"
+			title="JACTION_EDIT"
+		/>
+
+		<action
+			name="core.edit.state"
+			title="JACTION_EDITSTATE"
+		/>
+
+		<action
+			name="webhooks.test"
+			title="COM_WEBHOOKS_ACTION_TEST"
+		/>
+
+		<action
+			name="webhooks.replay"
+			title="COM_WEBHOOKS_ACTION_REPLAY"
+		/>
+
+		<action
+			name="webhooks.viewlogs"
+			title="COM_WEBHOOKS_ACTION_VIEWLOGS"
+		/>
+	</section>
+</access>
