@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" method="upgrade">
+	<name>com_webhooks</name>
+	<author>Joomla! Project</author>
+	<creationDate>2026-03</creationDate>
+	<copyright>(C) 2026 Open Source Matters, Inc.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<version>__DEPLOY_VERSION__</version>
+	<description>COM_WEBHOOKS_XML_DESCRIPTION</description>
+	<namespace path="src">Joomla\Component\Webhooks</namespace>
+	<media destination="com_webhooks" folder="media">
+		<folder>js</folder>
+	</media>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+
+	<administration>
+		<menu img="class:link">com_webhooks</menu>
+		<submenu>
+			<menu
+				link="option=com_webhooks"
+				view="webhooks"
+				img="class:link"
+				alt="Webhooks/Webhooks"
+				>
+				com_webhooks_webhooks
+			</menu>
+			<menu
+				link="option=com_webhooks&amp;view=logs"
+				view="logs"
+				img="class:list"
+				alt="Webhooks/Logs"
+				>
+				com_webhooks_logs
+			</menu>
+		</submenu>
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>webhooks.xml</filename>
+			<filename>config.xml</filename>
+			<folder>forms</folder>
+			<folder>services</folder>
+			<folder>sql</folder>
+			<folder>src</folder>
+			<folder>tmpl</folder>
+		</files>
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB/com_webhooks.ini</language>
+			<language tag="en-GB">language/en-GB/com_webhooks.sys.ini</language>
+		</languages>
+	</administration>
+
+	<api>
+		<files folder="api">
+			<folder>src</folder>
+		</files>
+	</api>
+</extension>

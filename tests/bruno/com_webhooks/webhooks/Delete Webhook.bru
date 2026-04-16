@@ -1,0 +1,19 @@
+meta {
+  name: Delete Webhook
+  type: http
+  seq: 9
+}
+
+delete {
+  url: {{baseUrl}}/index.php/v1/webhooks/{{webhookId}}
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+assert {
+  res.status: eq 200
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="task" method="upgrade">
+	<name>plg_task_webhooks</name>
+	<author>Joomla! Project</author>
+	<creationDate>2026-03</creationDate>
+	<copyright>(C) 2026 Open Source Matters, Inc.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<version>__DEPLOY_VERSION__</version>
+	<description>PLG_TASK_WEBHOOKS_XML_DESCRIPTION</description>
+	<namespace path="src">Joomla\Plugin\Task\Webhooks</namespace>
+	<files>
+		<folder plugin="webhooks">services</folder>
+		<folder>src</folder>
+		<folder>forms</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/plg_task_webhooks.ini</language>
+		<language tag="en-GB">language/en-GB/plg_task_webhooks.sys.ini</language>
+	</languages>
+</extension>

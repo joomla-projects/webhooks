@@ -1,0 +1,32 @@
+meta {
+  name: Get API Token
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/index.php?option=com_users&task=token.create
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "username": "admin",
+    "password": "admin"
+  }
+}
+
+assert {
+  res.status: eq 200
+}
+
+script:post-response {
+  if (res.body && res.body.data) {
+    bru.setEnvVar("token", res.body.data.attributes.token);
+  }
+}

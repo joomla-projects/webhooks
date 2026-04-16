@@ -1,0 +1,29 @@
+meta {
+  name: Update Webhook
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseUrl}}/index.php/v1/webhooks/{{webhookId}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "title": "Updated Test Webhook",
+    "retry_count": 3
+  }
+}
+
+assert {
+  res.status: eq 200
+  res.headers['content-type']: contains application/vnd.api+json
+  res.body.data.attributes.title: eq Updated Test Webhook
+}

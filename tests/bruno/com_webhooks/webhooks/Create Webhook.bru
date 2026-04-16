@@ -1,0 +1,45 @@
+meta {
+  name: Create Webhook
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/index.php/v1/webhooks
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "title": "Test Webhook",
+    "alias": "test-webhook",
+    "url": "https://httpbin.org/post",
+    "events": "[\"content.article.created\", \"content.article.updated\"]",
+    "payload_mode": "full",
+    "batch_mode": "individual",
+    "retry_strategy": "exponential",
+    "retry_count": 5,
+    "retry_interval": 60,
+    "state": 1
+  }
+}
+
+assert {
+  res.status: eq 200
+  res.headers['content-type']: contains application/vnd.api+json
+  res.body.data.type: eq webhooks
+  res.body.data.attributes.title: eq Test Webhook
+  res.body.data.attributes.url: eq https://httpbin.org/post
+}
+
+script:post-response {
+  if (res.body && res.body.data) {
+    bru.setEnvVar("webhookId", res.body.data.id);
+  }
+}

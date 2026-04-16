@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<help key="Webhooks:_Options"/>
+	<inlinehelp button="show"/>
+	<fieldset
+		name="delivery"
+		label="COM_WEBHOOKS_CONFIG_DELIVERY_LABEL"
+		description="COM_WEBHOOKS_CONFIG_DELIVERY_DESC"
+		>
+
+		<field
+			name="default_retry_strategy"
+			type="list"
+			label="COM_WEBHOOKS_FIELD_RETRY_STRATEGY_LABEL"
+			default="exponential"
+			validate="options"
+			>
+			<option value="exponential">COM_WEBHOOKS_OPTION_EXPONENTIAL</option>
+			<option value="fixed">COM_WEBHOOKS_OPTION_FIXED</option>
+		</field>
+
+		<field
+			name="default_retry_count"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_RETRY_COUNT_LABEL"
+			default="5"
+			filter="integer"
+			min="0"
+			max="20"
+		/>
+
+		<field
+			name="default_retry_interval"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_RETRY_INTERVAL_LABEL"
+			description="COM_WEBHOOKS_FIELD_RETRY_INTERVAL_DESC"
+			default="60"
+			filter="integer"
+			min="10"
+			max="86400"
+		/>
+
+		<field
+			name="request_timeout"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_REQUEST_TIMEOUT_LABEL"
+			description="COM_WEBHOOKS_FIELD_REQUEST_TIMEOUT_DESC"
+			default="10"
+			filter="integer"
+			min="1"
+			max="120"
+		/>
+
+		<field
+			name="user_agent"
+			type="text"
+			label="COM_WEBHOOKS_FIELD_USER_AGENT_LABEL"
+			default="Joomla-Webhooks/1.0"
+		/>
+
+		<field
+			name="queue_batch_size"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_QUEUE_BATCH_SIZE_LABEL"
+			description="COM_WEBHOOKS_FIELD_QUEUE_BATCH_SIZE_DESC"
+			default="50"
+			filter="integer"
+			min="1"
+			max="500"
+		/>
+
+		<field
+			name="max_retry_delay"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_MAX_RETRY_DELAY_LABEL"
+			description="COM_WEBHOOKS_FIELD_MAX_RETRY_DELAY_DESC"
+			default="3600"
+			filter="integer"
+			min="60"
+			max="86400"
+		/>
+
+	</fieldset>
+
+	<fieldset
+		name="defaults"
+		label="COM_WEBHOOKS_CONFIG_DEFAULTS_LABEL"
+		description="COM_WEBHOOKS_CONFIG_DEFAULTS_DESC"
+		>
+
+		<field
+			name="default_payload_mode"
+			type="list"
+			label="COM_WEBHOOKS_FIELD_PAYLOAD_MODE_LABEL"
+			default="full"
+			validate="options"
+			>
+			<option value="full">COM_WEBHOOKS_OPTION_FULL</option>
+			<option value="minimal">COM_WEBHOOKS_OPTION_MINIMAL</option>
+		</field>
+
+		<field
+			name="default_batch_mode"
+			type="list"
+			label="COM_WEBHOOKS_FIELD_BATCH_MODE_LABEL"
+			default="individual"
+			validate="options"
+			>
+			<option value="individual">COM_WEBHOOKS_OPTION_INDIVIDUAL</option>
+			<option value="batched">COM_WEBHOOKS_OPTION_BATCHED</option>
+		</field>
+
+		<field
+			name="default_circuit_breaker_mode"
+			type="list"
+			label="COM_WEBHOOKS_FIELD_CIRCUIT_BREAKER_MODE_LABEL"
+			default="disable"
+			validate="options"
+			>
+			<option value="disable">COM_WEBHOOKS_OPTION_DISABLE</option>
+			<option value="cooldown">COM_WEBHOOKS_OPTION_COOLDOWN</option>
+		</field>
+
+		<field
+			name="default_circuit_breaker_threshold"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_CIRCUIT_BREAKER_THRESHOLD_LABEL"
+			default="50"
+			filter="integer"
+			min="1"
+			max="1000"
+		/>
+
+		<field
+			name="default_verbose_logging"
+			type="radio"
+			layout="joomla.form.field.radio.switcher"
+			label="COM_WEBHOOKS_FIELD_VERBOSE_LOGGING_LABEL"
+			default="0"
+			>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field
+			name="log_retention_days"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_LOG_RETENTION_DAYS_LABEL"
+			description="COM_WEBHOOKS_FIELD_LOG_RETENTION_DAYS_DESC"
+			default="30"
+			filter="integer"
+			min="1"
+			max="365"
+		/>
+
+	</fieldset>
+
+	<fieldset
+		name="security"
+		label="COM_WEBHOOKS_CONFIG_SECURITY_LABEL"
+		description="COM_WEBHOOKS_CONFIG_SECURITY_DESC"
+		>
+
+		<field
+			name="signature_tolerance"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_SIGNATURE_TOLERANCE_LABEL"
+			description="COM_WEBHOOKS_FIELD_SIGNATURE_TOLERANCE_DESC"
+			default="300"
+			filter="integer"
+			min="30"
+			max="3600"
+		/>
+
+		<field
+			name="extra_blocked_ips"
+			type="textarea"
+			label="COM_WEBHOOKS_FIELD_EXTRA_BLOCKED_IPS_LABEL"
+			description="COM_WEBHOOKS_FIELD_EXTRA_BLOCKED_IPS_DESC"
+			rows="4"
+			filter="raw"
+		/>
+
+		<field
+			name="extra_redacted_headers"
+			type="textarea"
+			label="COM_WEBHOOKS_FIELD_EXTRA_REDACTED_HEADERS_LABEL"
+			description="COM_WEBHOOKS_FIELD_EXTRA_REDACTED_HEADERS_DESC"
+			rows="4"
+			filter="raw"
+		/>
+
+	</fieldset>
+
+	<fieldset
+		name="limits"
+		label="COM_WEBHOOKS_CONFIG_LIMITS_LABEL"
+		description="COM_WEBHOOKS_CONFIG_LIMITS_DESC"
+		>
+
+		<field
+			name="max_payload_size_kb"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_MAX_PAYLOAD_SIZE_KB_LABEL"
+			description="COM_WEBHOOKS_FIELD_MAX_PAYLOAD_SIZE_KB_DESC"
+			default="1024"
+			filter="integer"
+			min="64"
+			max="10240"
+		/>
+
+		<field
+			name="max_log_body_size_kb"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_MAX_LOG_BODY_SIZE_KB_LABEL"
+			description="COM_WEBHOOKS_FIELD_MAX_LOG_BODY_SIZE_KB_DESC"
+			default="64"
+			filter="integer"
+			min="4"
+			max="1024"
+		/>
+
+		<field
+			name="queue_lock_timeout"
+			type="number"
+			label="COM_WEBHOOKS_FIELD_QUEUE_LOCK_TIMEOUT_LABEL"
+			description="COM_WEBHOOKS_FIELD_QUEUE_LOCK_TIMEOUT_DESC"
+			default="60"
+			filter="integer"
+			min="10"
+			max="600"
+		/>
+
+	</fieldset>
+
+	<fieldset
+		name="permissions"
+		label="JCONFIG_PERMISSIONS_LABEL"
+		>
+
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			filter="rules"
+			validate="rules"
+			component="com_webhooks"
+			section="component"
+		/>
+
+	</fieldset>
+</config>

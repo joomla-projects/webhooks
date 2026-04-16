@@ -1,0 +1,27 @@
+meta {
+  name: Create Webhook - Validation
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/index.php/v1/webhooks
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "title": "",
+    "url": ""
+  }
+}
+
+assert {
+  res.status: eq 400
+}
