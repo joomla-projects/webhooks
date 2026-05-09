@@ -28,8 +28,7 @@
     Joomla.request({
       url: options.url,
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({ id: options.webhookId }),
+      data: `id=${options.webhookId}`,
       onSuccess: (response) => {
         let result;
 
